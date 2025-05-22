@@ -47,15 +47,95 @@ async function example(filePath: string) {
 }
 ```
 
-## Testing
+## API Reference
 
-Run the complete test suite with:
+### OPC Utilities (src/opc.ts)
+- **openArchive**(pathOrBuffer: string | Buffer | Uint8Array): Promise<JSZip>
+- **getPrimaryModelPath**(zip: JSZip): Promise<string>
 
-```bash
-bun test
+### Content Types (src/content-types.ts)
+- **getContentTypeMap**(zip: JSZip): Promise<ContentTypeMap>
+- **getContentType**(map: ContentTypeMap, partPath: string): string | null
+
+### Relationships (src/relationships.ts)
+- **getRelationships**(zip: JSZip): Promise<RelationshipMap>
+- **getStartPartPath**(relationships: RelationshipMap): string
+- **getRelationshipsByType**(relationships: RelationshipMap, type: string): Relationship[]
+
+### Model Parsing (src/model.ts)
+- **parseModel**(content: string): Model
+- **getModel**(zip: JSZip, modelPath: string): Promise<Model>
+
+### Resources (src/resources.ts)
+- **parseResourcesFromXml**(content: string): Resources
+- **parseResources**(modelXml: any): Resources
+
+### Build Parsing (src/build.ts)
+- **parseBuildFromXml**(content: string, resources: Resources): BuildItem[]
+
+### Document (src/document.ts)
+- **ThreeMFDocument**(model: Model, resources: Resources, build: BuildItem[])
+- **toJSON**(): DocumentJSON
+- **fromJSON**(json: DocumentJSON): ThreeMFDocument
+
+### Mesh (src/mesh.ts)
+- **parseMesh**(element: any): Mesh
+- **validateMesh**(mesh: Mesh, type: string): Mesh
+
+### Components (src/components.ts)
+- **flattenComponentHierarchy**(id: number, objects: Map<number, ObjectResource>): Mesh
+- **validateAllComponentReferences**(objects: Map<number, ObjectResource>): void
+
+### Builders (src/builder.ts)
+- **meshToXml**(mesh: Mesh)
+- **objectWithMesh**(id: number, mesh: Mesh, attrs?): ObjectElement
+- **buildItemXml**(objectId: number, attrs?): BuildItemElement
+
+### Packager (src/packager.ts)
+- **create3MFArchive**(xmlObj: ThreeMFXml, modelFilePath?: string): JSZip
+
+### Production Extension (src/production-extension)
+- **parseProductionExtensions**(xmlObj: any): void
+- **serializeProductionExtensions**(xmlObj: any): void
+- **generatePartRels**(xmlObj: any): any[]
+- **generateUUID**(): string
+
+## Builders and Packaging Utilities
+
+This library provides high-level helpers to build 3MF XML structures and package them without manual XML or ZIP boilerplate.
+
+```ts
+import type { ThreeMFXml } from './src/builder';
+import { objectWithMesh, buildItemXml } from './src/builder';
+import { create3MFArchive } from './src/packager';
+import type { Mesh } from './src/mesh';
+
+// Given a Mesh object (from parseMesh or custom geometry)
+const mesh: Mesh = /* ... */;
+
+// 1. Build object and build-item XML elements
+const objElement = objectWithMesh(1, mesh);
+const itemElement = buildItemXml(1 /* object ID */, { '@_partnumber': 'baseplate' });
+
+// 2. Assemble the top-level ThreeMFXml structure
+const xmlObj: ThreeMFXml = {
+  model: {
+    '@_unit': 'millimeter',
+    '@_xmlns': 'http://schemas.microsoft.com/3dmanufacturing/core/2015/02',
+    resources: { object: objElement },
+    build:     { item:  itemElement }
+  }
+};
+
+// 3. Create the .3mf package and write it out
+const zip = create3MFArchive(xmlObj);
+const buffer = await zip.generateAsync({ type: 'nodebuffer' });
+await Deno.writeFile('output.3mf', buffer);
 ```
 
-All modules are covered by unit tests. Tests are configured in GitHub Actions to run on pull requests and pushes to `main`.
+## Examples
+
+For runnable examples and usage details, see [examples/README.md](./examples/README.md).
 
 ## Contributing
 

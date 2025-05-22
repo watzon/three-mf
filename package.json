@@ -9,13 +9,15 @@
   },
   "devDependencies": {
     "@types/bun": "latest",
-    "@types/jszip": "^3.4.1"
+    "@types/jszip": "^3.4.1",
+    "stl": "^1.1.1"
   },
   "peerDependencies": {
     "typescript": "^5.8.3"
   },
   "dependencies": {
+    "fast-xml-parser": "^4.1.4",
     "jszip": "^3.10.1",
-    "fast-xml-parser": "^4.1.4"
+    "uuid": "^11.1.0"
   }
 }

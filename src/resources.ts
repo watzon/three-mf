@@ -2,6 +2,7 @@ import { XMLParser } from 'fast-xml-parser';
 import { MeshError, parseMesh, validateMesh } from './mesh';
 import type { Mesh } from './mesh';
 import { ValidationError } from './errors';
+import { parseProductionExtensions } from './production-extension/parser';
 
 /**
  * Supported object types in 3MF
@@ -36,6 +37,8 @@ export interface BaseMaterialsGroup {
 export interface Component {
   objectId: number;
   transform?: string;
+  path?: string;
+  uuid?: string;
 }
 
 /**
@@ -53,6 +56,7 @@ export interface ObjectResource {
   hasComponents: boolean;
   mesh?: Mesh;
   components?: Component[];
+  uuid?: string;
 }
 
 /**
@@ -237,12 +241,20 @@ function parseObjects(resourcesElement: any): Map<number, ObjectResource> {
           }
           
           const objectId = parseInt(component['@_objectid'], 10);
+          // Map production extension attributes
           objectResource.components.push({
             objectId,
-            transform: component['@_transform']
+            transform: component['@_transform'],
+            path: (component as any).path,
+            uuid: (component as any).componentUUID
           });
         }
       }
+    }
+    
+    // Assign production extension UUID if present
+    if ((object as any).resourceUUID) {
+      objectResource.uuid = (object as any).resourceUUID;
     }
     
     objectsMap.set(id, objectResource);
@@ -258,20 +270,22 @@ function parseObjects(resourcesElement: any): Map<number, ObjectResource> {
  * @throws ResourcesParseError if parsing fails or validation errors occur
  */
 export function parseResources(modelXml: any): Resources {
+  // If there's no <model> element, that's a fatal error
+  if (!modelXml.model) {
+    throw new ResourcesParseError('Model missing required model element');
+  }
+  const resourcesElement = modelXml.model.resources;
+  // If there's no <resources> element, return empty Resources
+  if (!resourcesElement) {
+    return {
+      baseMaterials: new Map<number, BaseMaterialsGroup>(),
+      objects: new Map<number, ObjectResource>()
+    };
+  }
   try {
-    if (!modelXml.model || !modelXml.model.resources) {
-      throw new ResourcesParseError('Model missing required resources element');
-    }
-    
-    const resourcesElement = modelXml.model.resources;
-    
     const baseMaterials = parseBaseMaterials(resourcesElement);
     const objects = parseObjects(resourcesElement);
-    
-    return {
-      baseMaterials,
-      objects
-    };
+    return { baseMaterials, objects };
   } catch (error) {
     if (error instanceof ResourcesParseError) {
       throw error;
@@ -295,6 +309,7 @@ export function parseResourcesFromXml(modelXmlContent: string): Resources {
   
   try {
     const xmlObj = parser.parse(modelXmlContent);
+    parseProductionExtensions(xmlObj);
     return parseResources(xmlObj);
   } catch (error) {
     if (error instanceof ResourcesParseError) {

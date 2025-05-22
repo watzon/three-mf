@@ -7,4 +7,5 @@ export * from './mesh';
 export * from './components';
 export * from './build';
 export * from './document';
-export * from './errors'; 
+export * from './errors';
+export * from './production-extension'; 

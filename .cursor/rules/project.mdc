@@ -6,3 +6,4 @@ alwaysApply: true
 - ALWAYS use Bun instead of NPM, PNPM, Yarn, etc.
 - DO NOT add packages directly to package.json, but instead install them using `bun add`.
 - When in doubt, use the context7 mcp to get documentation for packages and libraries.
+- When writing tests, be sure to iterate. Write tests, run them, and repeat until they pass.

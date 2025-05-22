@@ -2,6 +2,7 @@ import { XMLParser } from 'fast-xml-parser';
 import type { Resources, ObjectResource } from './resources';
 import { Matrix3D } from './components';
 import { ValidationError } from './errors';
+import { parseProductionExtensions } from './production-extension/parser';
 
 /**
  * Represents a build item linking an object resource with a transform and optional part number
@@ -11,6 +12,8 @@ export interface BuildItem {
   object: ObjectResource;
   transform: Matrix3D;
   partnumber?: string;
+  path?: string;
+  uuid?: string;
 }
 
 /**
@@ -62,7 +65,10 @@ export function parseBuild(modelXml: any, resources: Resources): BuildItem[] {
         );
       }
       const partnumber = item['@_partnumber'];
-      buildItems.push({ objectId, object: objectResource, transform, partnumber });
+      // Production extension attributes
+      const path = item.path;
+      const uuid = item.itemUUID;
+      buildItems.push({ objectId, object: objectResource, transform, partnumber, path, uuid });
     }
     return buildItems;
   } catch (error) {
@@ -91,6 +97,7 @@ export function parseBuildFromXml(
   });
   try {
     const xmlObj = parser.parse(modelXmlContent);
+    parseProductionExtensions(xmlObj);
     return parseBuild(xmlObj, resources);
   } catch (error) {
     if (error instanceof BuildParseError) {

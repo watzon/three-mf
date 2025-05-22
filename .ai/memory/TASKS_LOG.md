@@ -69,3 +69,52 @@
   - **Title:** CI & Test Setup
   - **Dependencies:** 8, 9
   - **Description:** Configure the testing framework (`bun test`), write initial unit tests for the modules implemented so far, and set up a GitHub Actions workflow to run tests on every push.
+
+- **Archived Task:** `.ai/memory/tasks/task11_production-extension-code-scaffolding.md`
+  - **Archived On:** 2025-05-22 04:25:04
+  - **Status:** Completed
+  - **Title:** Production Extension Code Scaffolding
+  - **Dependencies:**
+  - **Description:** Set up the initial code structure and register the production extension namespace constants and file modules.
+
+- **Archived Task:** `.ai/memory/tasks/task12_parser-support-production-extension-attributes.md`
+  - **Archived On:** 2025-05-22 04:25:04
+  - **Status:** Completed
+  - **Title:** Parser Support for Production Extension Attributes
+  - **Dependencies:** 11
+  - **Description:** Extend XML parser to read `path` and `p:UUID` attributes in `<build>`, `<item>`, `<component>`, and `<object>` elements.
+
+- **Archived Task:** `.ai/memory/tasks/task13_data-model-extension-production-attributes.md`
+  - **Archived On:** 2025-05-22 04:25:04
+  - **Status:** Completed
+  - **Title:** Data Model Extension for Production Attributes
+  - **Dependencies:** 12
+  - **Description:** Extend internal data structures to include `path` and `UUID` fields for models, items, components, and builds.
+
+- **Archived Task:** `.ai/memory/tasks/task14_serializer-support-production-extension.md`
+  - **Archived On:** 2025-05-22 04:25:04
+  - **Status:** Completed
+  - **Title:** Serializer Support for Production Extension
+  - **Dependencies:** 13, 15
+  - **Description:** Extend serialization logic to write `path` and `UUID` attributes and generate `.rels` files for referenced model parts.
+
+- **Archived Task:** `.ai/memory/tasks/task15_uuid-utility-production-extension.md`
+  - **Archived On:** 2025-05-22 04:25:04
+  - **Status:** Completed
+  - **Title:** UUID Utility for Production Extension
+  - **Dependencies:** 11
+  - **Description:** Implement GUID generation utility to produce valid ST_UUID strings for build, items, objects, and components.
+
+- **Archived Task:** `.ai/memory/tasks/task16_tests-production-extension.md`
+  - **Archived On:** 2025-05-22 04:25:04
+  - **Status:** Completed
+  - **Title:** Tests for Production Extension
+  - **Dependencies:** 14
+  - **Description:** Write unit and integration tests for parsing, data model, and serialization of production extension features.
+
+- **Archived Task:** `.ai/memory/tasks/task17_documentation-production-extension.md`
+  - **Archived On:** 2025-05-22 04:25:04
+  - **Status:** Completed
+  - **Title:** Documentation for Production Extension
+  - **Dependencies:** 16
+  - **Description:** Update project documentation with usage examples and reference to the Production Extension specification.

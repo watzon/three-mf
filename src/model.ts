@@ -109,8 +109,9 @@ export function parseModel(modelXmlContent: string): Model {
  * @returns Promise resolving to the parsed Model object
  */
 export async function getModel(zip: JSZip, modelPath: string): Promise<Model> {
-  // Get model content
-  const modelFile = zip.file(modelPath);
+  // Get model content, normalize leading slash if needed
+  const normalizedPath = modelPath.startsWith('/') ? modelPath.slice(1) : modelPath;
+  const modelFile = zip.file(normalizedPath) ?? zip.file(modelPath);
   if (!modelFile) {
     throw new ModelParseError(`Model file not found at path: ${modelPath}`);
   }

@@ -23,9 +23,16 @@ export interface DocumentJSON {
       pindex?: number;
       hasMesh: boolean;
       hasComponents: boolean;
+      uuid?: string;
     }>;
   };
-  build: Array<{ objectId: number; transform: string; partnumber?: string }>;
+  build: Array<{
+    objectId: number;
+    transform: string;
+    partnumber?: string;
+    path?: string;
+    uuid?: string;
+  }>;
 }
 
 /**
@@ -62,14 +69,17 @@ export class ThreeMFDocument {
         pid: obj.pid,
         pindex: obj.pindex,
         hasMesh: obj.hasMesh,
-        hasComponents: obj.hasComponents
+        hasComponents: obj.hasComponents,
+        uuid: (obj as any).uuid
       })
     );
 
     const build = this.build.map(item => ({
       objectId: item.objectId,
       transform: item.transform.toString(),
-      partnumber: item.partnumber
+      partnumber: item.partnumber,
+      path: (item as any).path,
+      uuid: (item as any).uuid
     }));
 
     return { model: this.model, resources: { baseMaterials, objects }, build };
@@ -99,7 +109,8 @@ export class ThreeMFDocument {
         pid: obj.pid,
         pindex: obj.pindex,
         hasMesh: obj.hasMesh,
-        hasComponents: obj.hasComponents
+        hasComponents: obj.hasComponents,
+        uuid: obj.uuid
       });
     });
 
@@ -112,7 +123,9 @@ export class ThreeMFDocument {
       objectId: item.objectId,
       object: objectsMap.get(item.objectId)!,
       transform: Matrix3D.fromString(item.transform),
-      partnumber: item.partnumber
+      partnumber: item.partnumber,
+      path: item.path,
+      uuid: item.uuid
     }));
 
     return new ThreeMFDocument(json.model, resources, buildItems);

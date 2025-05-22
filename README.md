@@ -20,13 +20,52 @@ Key features:
 bun install
 ```
 
+## Development
+
+### Installing dependencies
+
+```bash
+bun install
+```
+
+### Running tests
+
+```bash
+bun test --watch
+```
+
+### Building
+
+```bash
+bun run build
+```
+
+### Building in watch mode
+
+```bash
+bun run build --watch
+```
+
+## Deployment
+
+After building, publish the package to npm:
+
+```bash
+bun run build
+npm publish
+```
+
 ## Usage
 
 ```ts
-import { openArchive, getPrimaryModelPath, getModel } from './src/opc';
-import { parseResourcesFromXml } from './src/resources';
-import { parseBuildFromXml } from './src/build';
-import { ThreeMFDocument } from './src/document';
+import {
+  openArchive,
+  getPrimaryModelPath,
+  getModel,
+  parseResourcesFromXml,
+  parseBuildFromXml,
+  ThreeMFDocument
+} from 'three-mf';
 
 async function example(filePath: string) {
   // 1. Open 3MF archive

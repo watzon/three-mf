@@ -1,18 +1,30 @@
 {
   "name": "three-mf",
-  "module": "index.ts",
+  "version": "1.0.0",
+  "module": "dist/index.js",
   "type": "module",
-  "private": true,
+  "private": false,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    }
+  },
   "scripts": {
     "test": "bun test",
-    "dev": "bun run --watch index.ts"
+    "dev": "bun run --watch index.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "build:watch": "tsc -w -p tsconfig.build.json",
+    "prepare": "bun run build",
+    "prepublishOnly": "bun run test"
   },
   "devDependencies": {
     "@types/bun": "latest",
     "@types/jszip": "^3.4.1",
-    "stl": "^1.1.1"
-  },
-  "peerDependencies": {
+    "stl": "^1.1.1",
     "typescript": "^5.8.3"
   },
   "dependencies": {

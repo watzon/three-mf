@@ -29,3 +29,45 @@
 
 - [x] **ID 10: CI & Test Setup** (Priority: medium)
 > Configure `bun test`, add initial unit tests for earlier modules, and set up GitHub Actions.
+
+- [x] **ID 11: Production Extension Code Scaffolding** (Priority: critical)
+> Set up the initial code structure and register the production extension namespace constants and file modules.
+
+- [x] **ID 12: Parser Support for Production Extension Attributes** (Priority: high)
+> Extend XML parser to read `path` and `p:UUID` attributes in `<build>`, `<item>`, `<component>`, and `<object>` elements.
+
+- [x] **ID 13: Data Model Extension for Production Attributes** (Priority: high)
+> Extend internal data structures to include `path` and `UUID` fields for models, items, components, and builds.
+
+- [x] **ID 14: Serializer Support for Production Extension** (Priority: high)
+> Extend serialization logic to write `path` and `UUID` attributes and generate `.rels` files for referenced model parts.
+
+- [x] **ID 15: UUID Utility for Production Extension** (Priority: medium)
+> Implement GUID generation utility to produce valid ST_UUID strings for build, items, objects, and components.
+
+- [x] **ID 16: Tests for Production Extension** (Priority: medium)
+> Write unit and integration tests for parsing, data model, and serialization of production extension features.
+
+- [x] **ID 17: Documentation for Production Extension** (Priority: low)
+> Update project documentation with usage examples and reference to the Production Extension specification.
+
+- [ ] **ID 18: Data Models for Materials & Properties Extension** (Priority: high)
+> Define TypeScript interfaces and types for the 3MF Materials and Properties Extension elements.
+
+- [ ] **ID 19: XML Parsing for Materials & Properties Extension** (Priority: high)
+> Extend `parseResourcesFromXml` and related functions to parse all extension elements.
+
+- [ ] **ID 20: Document Integration & JSON Serialization for Extension** (Priority: high)
+> Integrate extension resources into `ThreeMFDocument` and include them in JSON output.
+
+- [ ] **ID 21: Builder Helpers for Materials & Properties Extension** (Priority: medium)
+> Implement XML builder functions for extension elements in `src/builder.ts`.
+
+- [ ] **ID 22: Packager Support for Extension Resources** (Priority: medium)
+> Extend `create3MFArchive` and relationships to include extension parts and texture data.
+
+- [ ] **ID 23: Unit Tests for Materials & Properties Extension** (Priority: medium)
+> Write unit tests covering parsing, building, and packaging of extension elements.
+
+- [ ] **ID 24: Documentation & Examples for Extension Usage** (Priority: low)
+> Update README, API reference, and examples to demonstrate materials and properties extension.

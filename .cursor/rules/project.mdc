@@ -1,0 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+- ALWAYS use Bun instead of NPM, PNPM, Yarn, etc.
+- DO NOT add packages directly to package.json, but instead install them using `bun add`.
+- When in doubt, use the context7 mcp to get documentation for packages and libraries.

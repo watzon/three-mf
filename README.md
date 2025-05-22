@@ -202,10 +202,19 @@ For runnable examples and usage details, see [examples/README.md](./examples/REA
 
 ## Contributing
 
-We use a file-based task system in `.ai/tasks/`. New features and bug fixes should follow existing patterns:
-1. Pick an open task in `.ai/TASKS.md` and update its status when done.
-2. Ensure all new code is covered by unit tests.
-3. Submit a pull request—CI will run automatically.
+We welcome contributions! Please follow these steps to contribute to three-mf:
+
+1. Fork the repository and clone your fork locally.
+2. Create a feature branch: `git checkout -b feature/your-feature`.
+3. Install dependencies: `bun install`.
+4. Implement your changes.
+5. Add or update tests under the `test/` directory to cover your changes.
+6. Ensure all tests pass: `bun test`.
+7. Commit your changes with a descriptive message: `git commit -m 'feat: describe your change'`.
+8. Push to your branch: `git push origin feature/your-feature`.
+9. Open a pull request against the `main` branch with a clear description of your changes.
+
+For bug reports or feature requests, please open an issue.
 
 ## License
 

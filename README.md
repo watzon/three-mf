@@ -55,6 +55,20 @@ bun run build
 npm publish
 ```
 
+## Roadmap
+
+Implementations status of 3MF spec (see [3MF specification](https://3mf.io/spec/)):
+
+- [x] Core 3MF Mesh Specification (Core spec) ([Github](https://github.com/3MFConsortium/spec_core/blob/master/3MF%20Core%20Specification.md))
+- [x] Production Extension ([Github](https://github.com/3MFConsortium/spec_production/blob/master/3MF%20Production%20Extension.md))
+- [ ] Beam Lattice Extension ([Github](https://github.com/3MFConsortium/spec_beamlattice/blob/master/3MF%20Beam%20Lattice%20Extension.md))
+- [ ] Boolean Operations Extension ([Github](https://github.com/3MFConsortium/spec_booleans/blob/main/3MF%20Boolean%20operations.md))
+- [ ] Displacement Extension ([Github](https://github.com/3MFConsortium/spec_displacement/blob/master/3MF%20Displacement%20Extension.md))
+- [ ] Materials and Properties Extension ([Github](https://github.com/3MFConsortium/spec_materials/blob/master/3MF%20Materials%20Extension.md))
+- [ ] Secure Content Extension ([Github](https://github.com/3MFConsortium/spec_securecontent/blob/master/3MF%20Secure%20Content.md))
+- [ ] Slice Extension ([Github](https://github.com/3MFConsortium/spec_slice/blob/master/3MF%20Slice%20Extension.md))
+- [ ] Volumetric Extension ([Github](https://github.com/3MFConsortium/spec_volumetric))
+
 ## Usage
 
 ```ts

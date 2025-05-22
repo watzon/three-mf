@@ -51,23 +51,25 @@
 - [x] **ID 17: Documentation for Production Extension** (Priority: low)
 > Update project documentation with usage examples and reference to the Production Extension specification.
 
-- [ ] **ID 18: Data Models for Materials & Properties Extension** (Priority: high)
+- [x] **ID 18: Data Models for Materials & Properties Extension** (Priority: high)
 > Define TypeScript interfaces and types for the 3MF Materials and Properties Extension elements.
 
-- [ ] **ID 19: XML Parsing for Materials & Properties Extension** (Priority: high)
+- [x] **ID 19: XML Parsing for Materials & Properties Extension** (Priority: high)
 > Extend `parseResourcesFromXml` and related functions to parse all extension elements.
 
-- [ ] **ID 20: Document Integration & JSON Serialization for Extension** (Priority: high)
+- [x] **ID 20: Document Integration & JSON Serialization for Extension** (Priority: high)
 > Integrate extension resources into `ThreeMFDocument` and include them in JSON output.
 
-- [ ] **ID 21: Builder Helpers for Materials & Properties Extension** (Priority: medium)
+- [x] **ID 21: Builder Helpers for Materials & Properties Extension** (Priority: medium)
 > Implement XML builder functions for extension elements in `src/builder.ts`.
 
-- [ ] **ID 22: Packager Support for Extension Resources** (Priority: medium)
+- [x] **ID 22: Packager Support for Extension Resources** (Priority: medium)
+> Dependencies: 21
 > Extend `create3MFArchive` and relationships to include extension parts and texture data.
 
-- [ ] **ID 23: Unit Tests for Materials & Properties Extension** (Priority: medium)
-> Write unit tests covering parsing, building, and packaging of extension elements.
+- [x] **ID 23: Unit Tests for Materials & Properties Extension** (Priority: medium)
+> Dependencies: 21, 22
+> Write unit tests covering parsing, building, and packaging of materials & properties extension elements.
 
-- [ ] **ID 24: Documentation & Examples for Extension Usage** (Priority: low)
-> Update README, API reference, and examples to demonstrate materials and properties extension.
+- [x] **ID 24: Documentation & Examples for Extension Usage** (Priority: low)
+> Update README, API reference, and examples to demonstrate materials & properties extension support.

@@ -62,4 +62,14 @@ Usage:
 bun run examples/stl-to-3mf.ts path/to/input.stl path/to/output.3mf
 ```
 
-Place your sample files in a convenient directory and reference them when running these examples. 
+Place your sample files in a convenient directory and reference them when running these examples.
+
+## Materials & Properties Extension Usage
+
+`materials-extension-usage.ts` shows how to parse 3MF Materials & Properties Extension resources from a 3MF file.
+
+Usage:
+
+```bash
+bun run examples/materials-extension-usage.ts path/to/model-with-extension.3mf
+``` 

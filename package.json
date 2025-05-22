@@ -1,6 +1,6 @@
 {
   "name": "three-mf",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "module": "dist/index.js",
   "type": "module",
   "private": false,

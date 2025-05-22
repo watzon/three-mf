@@ -61,7 +61,7 @@ Implementations status of 3MF spec (see [3MF specification](https://3mf.io/spec/
 
 - [x] [Core 3MF Mesh Specification (Core spec)](specs/3MF%20Core%20Specification.md)
 - [x] [Production Extension](specs/3MF%20Production%20Extension.md)
-- [ ] [Materials and Properties Extension](specs/3MF%20Materials%20Extension.md)
+- [x] [Materials and Properties Extension](specs/3MF%20Materials%20Extension.md)
 - [ ] [Slice Extension](specs/3MF%20Slice%20Extension.md)
 - [ ] [Beam Lattice Extension](specs/3MF%20Beam%20Lattice%20Extension.md)
 - [ ] [Boolean Operations Extension](specs/3MF%20Boolean%20operations.md)
@@ -143,6 +143,16 @@ async function example(filePath: string) {
 - **meshToXml**(mesh: Mesh)
 - **objectWithMesh**(id: number, mesh: Mesh, attrs?): ObjectElement
 - **buildItemXml**(objectId: number, attrs?): BuildItemElement
+- **texture2dToXml**(tex: Texture2D): any — Build `<texture2d>` elements for the Materials & Properties Extension.
+- **texture2dGroupToXml**(grp: Texture2DGroup): any — Build `<texture2dgroup>` elements.
+- **colorGroupToXml**(grp: ColorGroup): any — Build `<colorgroup>` elements.
+- **compositeMaterialsToXml**(grp: CompositeMaterials): any — Build `<compositematerials>` elements.
+- **multiPropertiesToXml**(mp: MultiProperties): any — Build `<multiproperties>` elements.
+- **pbSpecularDisplayPropertiesToXml**(dp: PBSpecularDisplayProperties): any — Build `<pbspeculardisplayproperties>` elements.
+- **pbMetallicDisplayPropertiesToXml**(dp: PBMetallicDisplayProperties): any — Build `<pbmetallicdisplayproperties>` elements.
+- **pbSpecularTextureDisplayPropertiesToXml**(dp: PBSpecularTextureDisplayProperties): any — Build `<pbspeculartexturedisplayproperties>` elements.
+- **pbMetallicTextureDisplayPropertiesToXml**(dp: PBMetallicTextureDisplayProperties): any — Build `<pbmetallictexturedisplayproperties>` elements.
+- **translucentDisplayPropertiesToXml**(dp: TranslucentDisplayProperties): any — Build `<translucentdisplayproperties>` elements.
 
 ### Packager (src/packager.ts)
 - **create3MFArchive**(xmlObj: ThreeMFXml, modelFilePath?: string): JSZip

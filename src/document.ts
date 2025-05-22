@@ -2,6 +2,18 @@ import type { Model } from './model';
 import type { Resources, BaseMaterialsGroup, BaseMaterial, ObjectResource } from './resources';
 import type { BuildItem } from './build';
 import { Matrix3D } from './components';
+import type {
+  Texture2D,
+  Texture2DGroup,
+  ColorGroup,
+  CompositeMaterials,
+  MultiProperties,
+  PBSpecularDisplayProperties,
+  PBMetallicDisplayProperties,
+  PBSpecularTextureDisplayProperties,
+  PBMetallicTextureDisplayProperties,
+  TranslucentDisplayProperties
+} from './materials-extension/types';
 
 /**
  * JSON structure for serializing a 3MF document
@@ -25,6 +37,18 @@ export interface DocumentJSON {
       hasComponents: boolean;
       uuid?: string;
     }>;
+    textures: Texture2D[];
+    texture2DGroups: Texture2DGroup[];
+    colorGroups: ColorGroup[];
+    compositeMaterials: CompositeMaterials[];
+    multiProperties: MultiProperties[];
+    displayProperties: (
+      PBSpecularDisplayProperties |
+      PBMetallicDisplayProperties |
+      PBSpecularTextureDisplayProperties |
+      PBMetallicTextureDisplayProperties |
+      TranslucentDisplayProperties
+    )[];
   };
   build: Array<{
     objectId: number;
@@ -82,7 +106,19 @@ export class ThreeMFDocument {
       uuid: (item as any).uuid
     }));
 
-    return { model: this.model, resources: { baseMaterials, objects }, build };
+    // Extension resources
+    const textures = Array.from((this.resources.textures ?? new Map()).values());
+    const texture2DGroups = Array.from((this.resources.texture2DGroups ?? new Map()).values());
+    const colorGroups = Array.from((this.resources.colorGroups ?? new Map()).values());
+    const compositeMaterials = Array.from((this.resources.compositeMaterials ?? new Map()).values());
+    const multiProperties = Array.from((this.resources.multiProperties ?? new Map()).values());
+    const displayProperties = Array.from((this.resources.displayProperties ?? new Map()).values());
+
+    return {
+      model: this.model,
+      resources: { baseMaterials, objects, textures, texture2DGroups, colorGroups, compositeMaterials, multiProperties, displayProperties },
+      build
+    };
   }
 
   /**
@@ -114,9 +150,29 @@ export class ThreeMFDocument {
       });
     });
 
+    // Rebuild extension resource maps
+    const texturesMap: Map<number, Texture2D> = new Map();
+    json.resources.textures.forEach(tex => texturesMap.set(tex.id, tex));
+    const texture2DGroupsMap: Map<number, Texture2DGroup> = new Map();
+    json.resources.texture2DGroups.forEach(grp => texture2DGroupsMap.set(grp.id, grp));
+    const colorGroupsMap: Map<number, ColorGroup> = new Map();
+    json.resources.colorGroups.forEach(grp => colorGroupsMap.set(grp.id, grp));
+    const compositeMaterialsMap: Map<number, CompositeMaterials> = new Map();
+    json.resources.compositeMaterials.forEach(grp => compositeMaterialsMap.set(grp.id, grp));
+    const multiPropertiesMap: Map<number, MultiProperties> = new Map();
+    json.resources.multiProperties.forEach(mp => multiPropertiesMap.set(mp.id, mp));
+    const displayPropertiesMap: Map<number, PBSpecularDisplayProperties | PBMetallicDisplayProperties | PBSpecularTextureDisplayProperties | PBMetallicTextureDisplayProperties | TranslucentDisplayProperties> = new Map();
+    json.resources.displayProperties.forEach(dp => displayPropertiesMap.set(dp.id, dp));
+
     const resources: Resources = {
       baseMaterials: baseMaterialsMap,
-      objects: objectsMap
+      objects: objectsMap,
+      textures: texturesMap,
+      texture2DGroups: texture2DGroupsMap,
+      colorGroups: colorGroupsMap,
+      compositeMaterials: compositeMaterialsMap,
+      multiProperties: multiPropertiesMap,
+      displayProperties: displayPropertiesMap
     };
 
     const buildItems: BuildItem[] = json.build.map(item => ({

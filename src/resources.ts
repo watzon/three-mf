@@ -3,6 +3,8 @@ import { MeshError, parseMesh, validateMesh } from './mesh';
 import type { Mesh } from './mesh';
 import { ValidationError } from './errors';
 import { parseProductionExtensions } from './production-extension/parser';
+import { parseMaterialsExtensions } from './materials-extension/parser';
+import type { MaterialsExtensionResources } from './materials-extension/types';
 
 /**
  * Supported object types in 3MF
@@ -62,7 +64,7 @@ export interface ObjectResource {
 /**
  * Resources container
  */
-export interface Resources {
+export interface Resources extends MaterialsExtensionResources {
   baseMaterials: Map<number, BaseMaterialsGroup>;
   objects: Map<number, ObjectResource>;
 }
@@ -274,18 +276,21 @@ export function parseResources(modelXml: any): Resources {
   if (!modelXml.model) {
     throw new ResourcesParseError('Model missing required model element');
   }
+  // Parse materials extension resources
+  const materialsExt = parseMaterialsExtensions(modelXml);
   const resourcesElement = modelXml.model.resources;
   // If there's no <resources> element, return empty Resources
   if (!resourcesElement) {
     return {
       baseMaterials: new Map<number, BaseMaterialsGroup>(),
-      objects: new Map<number, ObjectResource>()
+      objects: new Map<number, ObjectResource>(),
+      ...materialsExt
     };
   }
   try {
     const baseMaterials = parseBaseMaterials(resourcesElement);
     const objects = parseObjects(resourcesElement);
-    return { baseMaterials, objects };
+    return { baseMaterials, objects, ...materialsExt };
   } catch (error) {
     if (error instanceof ResourcesParseError) {
       throw error;
@@ -310,6 +315,7 @@ export function parseResourcesFromXml(modelXmlContent: string): Resources {
   try {
     const xmlObj = parser.parse(modelXmlContent);
     parseProductionExtensions(xmlObj);
+    // Materials extension parsing occurs inside parseResources
     return parseResources(xmlObj);
   } catch (error) {
     if (error instanceof ResourcesParseError) {

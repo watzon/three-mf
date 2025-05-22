@@ -118,3 +118,52 @@
   - **Title:** Documentation for Production Extension
   - **Dependencies:** 16
   - **Description:** Update project documentation with usage examples and reference to the Production Extension specification.
+
+- **Archived Task:** `.ai/memory/tasks/task18_data-models-materials-properties-extension.md`
+  - **Archived On:** 2025-05-22 18:00:00
+  - **Status:** Completed
+  - **Title:** Data Models for Materials & Properties Extension
+  - **Dependencies:**
+  - **Description:** Define TypeScript interfaces and types for the 3MF Materials and Properties Extension elements.
+
+- **Archived Task:** `.ai/memory/tasks/task19_xml-parsing-materials-properties-extension.md`
+  - **Archived On:** 2025-05-22 18:00:00
+  - **Status:** Completed
+  - **Title:** XML Parsing for Materials & Properties Extension
+  - **Dependencies:** 18
+  - **Description:** Extend parseResourcesFromXml and related functions to parse all extension elements.
+
+- **Archived Task:** `.ai/memory/tasks/task20_document-integration-json-serialization-extension.md`
+  - **Archived On:** 2025-05-22 18:00:00
+  - **Status:** Completed
+  - **Title:** Document Integration & JSON Serialization for Extension
+  - **Dependencies:** 19
+  - **Description:** Integrate extension resources into ThreeMFDocument and include them in JSON output.
+
+- **Archived Task:** `.ai/memory/tasks/task21_builder-helpers-materials-properties-extension.md`
+  - **Archived On:** 2025-05-22 18:15:00
+  - **Status:** Completed
+  - **Title:** Builder Helpers for Materials & Properties Extension
+  - **Dependencies:** 20
+  - **Description:** Implement XML builder functions for extension elements in `src/builder.ts`.
+
+- **Archived Task:** `.ai/memory/tasks/task22_packager-support-extension-resources.md`
+  - **Archived On:** 2025-05-22 22:16:12
+  - **Status:** Completed
+  - **Title:** Packager Support for Extension Resources
+  - **Dependencies:** 21
+  - **Description:** Extend the 3MF archive packager to include materials & properties extension resources and texture data.
+
+- **Archived Task:** `.ai/memory/tasks/task23_unit-tests-materials-properties-extension.md`
+  - **Archived On:** 2025-05-22 22:16:12
+  - **Status:** Completed
+  - **Title:** Unit Tests for Materials & Properties Extension
+  - **Dependencies:** 21, 22
+  - **Description:** Write unit tests covering parsing, building, and packaging of materials & properties extension elements.
+
+- **Archived Task:** `.ai/memory/tasks/task24_documentation-examples-extension-usage.md`
+  - **Archived On:** 2025-05-22 22:16:12
+  - **Status:** Completed
+  - **Title:** Documentation & Examples for Extension Usage
+  - **Dependencies:** 23
+  - **Description:** Update README, API reference, and usage examples to demonstrate materials & properties extension support.

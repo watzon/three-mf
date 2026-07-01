@@ -2,6 +2,20 @@
 
 All notable changes to this project are documented in this file.
 
+## [1.1.1] - 2026-07-01
+
+### Fixed
+- Emit Node-compatible ESM with explicit `.js` relative imports (`NodeNext` build).
+
+### Changed
+- Exclude the development OPC harness (`src/test.ts`) from published builds.
+- Run `bun run build` in CI before tests.
+- Package `exports` now expose ESM `import` only (removed misleading `require` condition).
+
+### Added
+- MIT `LICENSE` file and npm metadata (`description`, `repository`, `keywords`, `sideEffects`).
+- Root exports for `builder` and `packager`; subpath exports for `production-extension` and `materials-extension`.
+
 ## [1.1.0] - 2025-05-22
 
 ### Added

@@ -1,6 +1,6 @@
 import JSZip from 'jszip';
 import { XMLParser } from 'fast-xml-parser';
-import { ValidationError } from './errors';
+import { ValidationError } from './errors.js';
 
 /**
  * Supported unit types in 3MF

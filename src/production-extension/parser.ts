@@ -1,7 +1,7 @@
 // Parser support for 3MF Production Extension
 // TODO: Implement parsing of production extension attributes
 
-import { PRODUCTION_EXTENSION_NAMESPACE, PRODUCTION_EXTENSION_PREFIX } from './constants';
+import { PRODUCTION_EXTENSION_NAMESPACE, PRODUCTION_EXTENSION_PREFIX } from './constants.js';
 
 /**
  * Parses production extension attributes from the parsed XML object.

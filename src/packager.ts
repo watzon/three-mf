@@ -1,7 +1,7 @@
 import JSZip from 'jszip';
 import { readFileSync } from 'fs';
 import { XMLBuilder } from 'fast-xml-parser';
-import type { ThreeMFXml } from './builder';
+import type { ThreeMFXml } from './builder.js';
 
 /**
  * Creates a JSZip instance representing a .3mf archive containing the given XML object.

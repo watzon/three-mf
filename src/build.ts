@@ -1,8 +1,8 @@
 import { XMLParser } from 'fast-xml-parser';
-import type { Resources, ObjectResource } from './resources';
-import { Matrix3D } from './components';
-import { ValidationError } from './errors';
-import { parseProductionExtensions } from './production-extension/parser';
+import type { Resources, ObjectResource } from './resources.js';
+import { Matrix3D } from './components.js';
+import { ValidationError } from './errors.js';
+import { parseProductionExtensions } from './production-extension/parser.js';
 
 /**
  * Represents a build item linking an object resource with a transform and optional part number

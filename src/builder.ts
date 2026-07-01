@@ -1,4 +1,4 @@
-import type { Mesh, Triangle, Vertex } from './mesh';
+import type { Mesh, Triangle, Vertex } from './mesh.js';
 import type {
   Texture2D,
   Texture2DGroup,
@@ -10,7 +10,7 @@ import type {
   PBSpecularTextureDisplayProperties,
   PBMetallicTextureDisplayProperties,
   TranslucentDisplayProperties
-} from './materials-extension/types';
+} from './materials-extension/types.js';
 
 /**
  * XML representation of a vertex

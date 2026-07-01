@@ -7,7 +7,10 @@
     "declarationMap": true,
     "sourceMap": true,
     "rootDir": "src",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "allowImportingTsExtensions": false
   },
-  "include": ["src"]
-} 
+  "include": ["src"],
+  "exclude": ["src/test.ts"]
+}

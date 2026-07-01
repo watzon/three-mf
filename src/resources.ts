@@ -1,10 +1,10 @@
 import { XMLParser } from 'fast-xml-parser';
-import { MeshError, parseMesh, validateMesh } from './mesh';
-import type { Mesh } from './mesh';
-import { ValidationError } from './errors';
-import { parseProductionExtensions } from './production-extension/parser';
-import { parseMaterialsExtensions } from './materials-extension/parser';
-import type { MaterialsExtensionResources } from './materials-extension/types';
+import { MeshError, parseMesh, validateMesh } from './mesh.js';
+import type { Mesh } from './mesh.js';
+import { ValidationError } from './errors.js';
+import { parseProductionExtensions } from './production-extension/parser.js';
+import { parseMaterialsExtensions } from './materials-extension/parser.js';
+import type { MaterialsExtensionResources } from './materials-extension/types.js';
 
 /**
  * Supported object types in 3MF

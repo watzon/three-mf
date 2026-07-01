@@ -1,5 +1,6 @@
 {
   "lockfileVersion": 1,
+  "configVersion": 0,
   "workspaces": {
     "": {
       "name": "three-mf",
@@ -12,8 +13,6 @@
         "@types/bun": "latest",
         "@types/jszip": "^3.4.1",
         "stl": "^1.1.1",
-      },
-      "peerDependencies": {
         "typescript": "^5.8.3",
       },
     },

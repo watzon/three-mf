@@ -17,8 +17,8 @@ import type {
   Composite,
   Multi,
   MaterialsExtensionResources
-} from './types';
-import { ResourcesParseError } from '../resources';
+} from './types.js';
+import { ResourcesParseError } from '../resources.js';
 
 const MATERIALS_EXTENSION_NAMESPACE = 'http://schemas.microsoft.com/3dmanufacturing/material/2015/02';
 const MATERIALS_EXTENSION_PREFIX = 'm';

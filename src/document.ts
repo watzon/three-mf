@@ -1,7 +1,7 @@
-import type { Model } from './model';
-import type { Resources, BaseMaterialsGroup, BaseMaterial, ObjectResource } from './resources';
-import type { BuildItem } from './build';
-import { Matrix3D } from './components';
+import type { Model } from './model.js';
+import type { Resources, BaseMaterialsGroup, BaseMaterial, ObjectResource } from './resources.js';
+import type { BuildItem } from './build.js';
+import { Matrix3D } from './components.js';
 import type {
   Texture2D,
   Texture2DGroup,
@@ -13,7 +13,7 @@ import type {
   PBSpecularTextureDisplayProperties,
   PBMetallicTextureDisplayProperties,
   TranslucentDisplayProperties
-} from './materials-extension/types';
+} from './materials-extension/types.js';
 
 /**
  * JSON structure for serializing a 3MF document

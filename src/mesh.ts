@@ -49,7 +49,7 @@ export interface Mesh {
   hasConsistentOrientation?: boolean;
 }
 
-import { ValidationError } from './errors';
+import { ValidationError } from './errors.js';
 /**
  * Error thrown when mesh parsing or validation fails
  */

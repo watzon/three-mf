@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs';
 import JSZip from 'jszip';
-import { getContentTypeMap } from './content-types';
-import { getRelationships, getStartPartPath } from './relationships';
+import { getContentTypeMap } from './content-types.js';
+import { getRelationships, getStartPartPath } from './relationships.js';
 
 /**
  * Opens a .3mf archive and returns a JSZip instance.

@@ -1,11 +1,11 @@
 /**
  * Component composition functionality for 3MF objects
  */
-import { ObjectType, ResourcesParseError } from './resources';
-import { ValidationError } from './errors';
-import type { ObjectResource, Component } from './resources';
-import type { Mesh, Triangle, Vertex } from './mesh';
-import { MeshError } from './mesh';
+import { ObjectType, ResourcesParseError } from './resources.js';
+import { ValidationError } from './errors.js';
+import type { ObjectResource, Component } from './resources.js';
+import type { Mesh, Triangle, Vertex } from './mesh.js';
+import { MeshError } from './mesh.js';
 
 /**
  * 3D Matrix as defined in the 3MF spec (4x4 matrix with last row fixed as [0,0,0,1])

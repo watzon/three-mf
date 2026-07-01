@@ -1,7 +1,7 @@
 // Serializer support for 3MF Production Extension
 // TODO: Implement serialization of production extension attributes
 
-import { PRODUCTION_EXTENSION_NAMESPACE, PRODUCTION_EXTENSION_PREFIX } from './constants';
+import { PRODUCTION_EXTENSION_NAMESPACE, PRODUCTION_EXTENSION_PREFIX } from './constants.js';
 
 /**
  * Adds production extension attributes to the XML object before building XML.

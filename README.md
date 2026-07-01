@@ -17,8 +17,12 @@ Key features:
 ## Installation
 
 ```bash
-bun install
+npm install three-mf
+# or
+bun add three-mf
 ```
+
+For local development, clone the repo and run `bun install`.
 
 ## Development
 
@@ -46,12 +50,14 @@ bun run build
 bun run build --watch
 ```
 
-## Deployment
+## Publishing
 
-After building, publish the package to npm:
+This package is prepared to publish to [npm](https://www.npmjs.com/package/three-mf) as `three-mf`. To cut a release:
 
 ```bash
 bun run build
+bun test
+npm publish --dry-run
 npm publish
 ```
 

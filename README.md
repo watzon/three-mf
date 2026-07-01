@@ -50,17 +50,6 @@ bun run build
 bun run build --watch
 ```
 
-## Publishing
-
-This package is prepared to publish to [npm](https://www.npmjs.com/package/three-mf) as `three-mf`. To cut a release:
-
-```bash
-bun run build
-bun test
-npm publish --dry-run
-npm publish
-```
-
 ## Roadmap
 
 Implementations status of 3MF spec (see [3MF specification](https://3mf.io/spec/)):

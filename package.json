@@ -51,14 +51,14 @@
     "clean": "rm -rf dist",
     "test": "bun test",
     "dev": "bun run --watch index.ts",
-    "build": "bun run clean && tsc -p tsconfig.build.json",
+    "build": "npm run clean && tsc -p tsconfig.build.json",
     "build:watch": "tsc -w -p tsconfig.build.json",
-    "prepack": "bun run build",
-    "prepublishOnly": "bun run build && bun run test"
+    "prepack": "npm run build",
+    "prepublishOnly": "npm run build && npm test"
   },
   "devDependencies": {
     "@types/bun": "latest",
-    "@types/jszip": "^3.4.1",
+    "@types/node": "^22.15.0",
     "stl": "^1.1.1",
     "typescript": "^5.8.3"
   },

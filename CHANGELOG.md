@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented in this file.
 
+## [1.1.2] - 2026-07-01
+
+### Fixed
+- npm publish pipeline: build scripts use `npm run` so TypeScript compiles without Bun on PATH.
+- Add `@types/node` for reliable `fs`/`Buffer` types during publish builds.
+
 ## [1.1.1] - 2026-07-01
 
 ### Fixed
